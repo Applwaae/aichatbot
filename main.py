@@ -33,8 +33,8 @@ except Exception as e:
 
 # --- Streamlit 应用界面 ---
 
-st.title("💬 AI chatting robot")
-st.caption("powered by Gemini")
+st.title("💬 我的 Streamlit AI 聊天机器人")
+st.caption("一个由 Gemini 驱动的聊天应用")
 
 # --- 模型选择 ---
 # 注意：'gemini-2.5-flash' 目前（截至2024年底）还不存在。
@@ -68,7 +68,7 @@ for message in st.session_state.messages:
 
 # --- 接收用户输入 ---
 # st.chat_input 会在页面底部显示一个输入框
-if prompt := st.chat_input("Hello, how may I help you?"):
+if prompt := st.chat_input("你好，有什么可以帮你的吗？"):
     
     # 1. 将用户的消息添加到 session_state 和聊天气泡中
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -78,7 +78,7 @@ if prompt := st.chat_input("Hello, how may I help you?"):
     # 2. 调用 Gemini API 获取回复
     try:
         # 显示一个加载提示
-        with st.spinner("Gemini is thinking..."):
+        with st.spinner("Gemini 正在思考中..."):
             # 注意：我们使用 st.session_state.chat.send_message()
             # 这允许模型记住上下文（之前的对话）
             response = st.session_state.chat.send_message(prompt)
